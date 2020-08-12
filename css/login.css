@@ -1,0 +1,83 @@
+.form_container {
+	height: 100%;
+	width: 100%;
+	background-image: url(/img/cover_back.png);
+	background-position-y: center;
+	background-size: cover;
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-align: center;
+}
+.login_form {
+	width: 30%;
+	height: 60%;
+	background: transparent;
+	padding: 5px;
+	position: absolute;
+	top: 150px;
+	right: 5%;
+	overflow: hidden;
+}
+.btns {
+	width: fit-content;
+	padding: 10px;
+	margin: 20px auto;
+	position: relative;
+	border-radius: 50px;
+	box-shadow: 0 0 10px 5px #a7a4a4;
+}
+.switch_btn {
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+	transition: 0.5s;
+}
+.switch_btn:hover {
+	background: linear-gradient(to right, #ec9ca7, #d33a57);
+	border-radius: 50px;
+	padding: 10px;
+}
+
+.text_input {
+	position: relative;
+	width: 90%;
+	padding: 8px;
+	margin: 10px 3px;
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+	background: transparent;
+}
+.submit_btn {
+	background: linear-gradient(to right, #ec9ca7, #d33a57);
+	width: 70%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	border: 0;
+	outline: none;
+	border-radius: 50px;
+}
+.check_input {
+	margin-top: 20px;
+	margin-bottom: 0;
+    margin-left: 20px;
+}
+span {
+    margin: 5px;
+}
+form {
+	position: relative;
+	top: 10px;
+	transition: 0.8s;
+}
+#inicio_sesion {
+	top: 5%;
+}
+#crear_cuenta {
+	top: 55%;
+}

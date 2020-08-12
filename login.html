@@ -13,7 +13,9 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
+  <!-- Estilos login/register-->
+  <link href="css/login.css" rel="stylesheet" />
+  <!-- <style>
     html, body{
       height: 100%;
     }
@@ -34,10 +36,10 @@
       padding: 15px;
       margin: auto;
     }
-  </style>
+  </style> -->
 </head>
 
-<body class="text-center">
+<!-- <body class="text-center">
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -45,7 +47,63 @@
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+  </div> -->
+  <body>
+    <div class="form_container">
+			<div class="login_form">
+				<div class="btns">
+					<button type="button" class="switch_btn" onclick="is()">
+						Iniciar sesión
+					</button>
+					<button type="button" class="switch_btn" onclick="cc()">
+						Registrarse
+					</button>
+				</div>
+				<form id="inicio_sesion">
+					<input
+						type="text"
+						placeholder="Nombre de usuario"
+						class="text_input"
+						required
+					/>
+					<input
+						type="password"
+						placeholder="Ingrese su contraseña"
+						class="text_input"
+						required
+					/>
+                    <button 
+                        type="submit" 
+                        class="submit_btn">Iniciar sesión</button>
+					<a href="">Olvidé mi contraseña</a>
+					<input type="checkbox" class="check_input" /><span>Recordarme</span>
+				</form>
+				<form id="crear_cuenta">
+					<input
+						type="text"
+						placeholder="Nombre de usuario"
+						class="text_input"
+						required
+					/>
+					<input
+						type="email"
+						placeholder="Correo electrónico"
+						class="text_input"
+						required
+					/>
+					<input
+						type="text"
+						placeholder="Contraseña"
+						class="text_input"
+						required
+					/>
+					<button type="submit" class="submit_btn">Crear cuenta</button>
+					<input type="checkbox" class="check_input" required /><span
+						>Acepto los terminos y condiciones.</span
+					>
+				</form>
+			</div>
+		</div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>

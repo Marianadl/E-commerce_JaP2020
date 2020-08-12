@@ -4,3 +4,14 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
+var login = document.getElementById('inicio_sesion');
+var register = document.getElementById('crear_cuenta');
+
+function cc() {
+    login.style.top = '80%';
+    register.style.top = '-50%';
+}
+function is() {
+    login.style.top = '5%';
+    register.style.top = '50%';
+}
