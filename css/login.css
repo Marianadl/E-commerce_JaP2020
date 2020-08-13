@@ -1,7 +1,7 @@
 .form_container {
 	height: 100%;
 	width: 100%;
-	background-image: url(/img/cover_back.png);
+	background-image: url(../img/cover_back.png);
 	background-position-y: center;
 	background-size: cover;
 	position: absolute;
