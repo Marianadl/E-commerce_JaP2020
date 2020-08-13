@@ -61,43 +61,51 @@
 				</div>
 				<form id="inicio_sesion">
 					<input
-						type="text"
+						type="name"
 						placeholder="Nombre de usuario"
 						class="text_input"
+						id="userName"
 						required
 					/>
 					<input
 						type="password"
 						placeholder="Ingrese su contraseña"
 						class="text_input"
+						id="password"
 						required
 					/>
                     <button 
                         type="submit" 
-                        class="submit_btn">Iniciar sesión</button>
-					<a href="">Olvidé mi contraseña</a>
+						class="submit_btn"
+						id="loginBtn"
+						disabled>Iniciar sesión
+					</button>
+						<a href="">Olvidé mi contraseña</a>
 					<input type="checkbox" class="check_input" /><span>Recordarme</span>
 				</form>
 				<form id="crear_cuenta">
 					<input
-						type="text"
+						type="name"
 						placeholder="Nombre de usuario"
 						class="text_input"
+						id="registerUserName"
 						required
 					/>
 					<input
 						type="email"
 						placeholder="Correo electrónico"
 						class="text_input"
+						id="userEmail"
 						required
 					/>
 					<input
-						type="text"
+						type="password"
 						placeholder="Contraseña"
 						class="text_input"
+						id="registerPassword"
 						required
 					/>
-					<button type="submit" class="submit_btn">Crear cuenta</button>
+					<button type="submit" class="submit_btn" id="registerBtn" disabled>Crear cuenta</button>
 					<input type="checkbox" class="check_input" required /><span
 						>Acepto los terminos y condiciones.</span
 					>
