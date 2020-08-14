@@ -4,23 +4,36 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
-var login = document.getElementById('inicio_sesion');
-var register = document.getElementById('crear_cuenta');
+var loginOpt = document.getElementById('inicio_sesion');
+var registerOpt = document.getElementById('crear_cuenta');
+
 
 function cc() {
-    login.style.top = '80%';
-    register.style.top = '-50%';
+    loginOpt.style.top = '80%';
+    registerOpt.style.top = '-50%';
 }
 function is() {
-    login.style.top = '5%';
-    register.style.top = '50%';
+    loginOpt.style.top = '5%';
+    registerOpt.style.top = '50%';
 }
 
-// validación login form
+//función onClick del login p/ redirección
+function onLogin() {
+    window.location.href="index.html";
+            }; 
 
+//función onClick del register p/ redirección
+function onRegister() {
+    window.location.href="login.html"
+};
+
+
+// validación login form
 var userName = document.getElementById("userName");
 var loginPassword = document.getElementById("password");
 var loginBtn = document.getElementById("loginBtn");
+
+
 
 function checkLoginForm() {
     if ( userName.value == "" || loginPassword.value == "") {
@@ -35,7 +48,7 @@ function checkLoginForm() {
 
 userName.addEventListener("blur", checkLoginForm, false);
 loginPassword.addEventListener("blur", checkLoginForm, false);
-
+/*
 // validación register form
 
 var registerUserName = document.getElementById("registerUserName");
@@ -56,4 +69,4 @@ function checkRegisterForm () {
 
 registerUserName.addEventListener("blur", checkRegisterForm, false);
 userEmail.addEventListener("blur", checkRegisterForm, false);
-registerPassword.addEventListener("blur", checkRegisterForm, false);
+registerPassword.addEventListener("blur", checkRegisterForm, false); */

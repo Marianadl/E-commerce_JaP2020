@@ -70,7 +70,7 @@
 span {
     margin: 5px;
 }
-form {
+.form {
 	position: relative;
 	top: 10px;
 	transition: 0.8s;

@@ -59,61 +59,64 @@
 						Registrarse
 					</button>
 				</div>
-				<form id="inicio_sesion">
+				<div class="form" id="inicio_sesion">
 					<input
 						type="name"
 						placeholder="Nombre de usuario"
 						class="text_input"
 						id="userName"
-						required
+						
 					/>
 					<input
 						type="password"
 						placeholder="Ingrese su contraseña"
 						class="text_input"
 						id="password"
-						required
+						
 					/>
                     <button 
                         type="submit" 
 						class="submit_btn"
 						id="loginBtn"
-						disabled>Iniciar sesión
+						disabled
+						onclick="onLogin()"						
+					 > Iniciar sesión
 					</button>
 						<a href="">Olvidé mi contraseña</a>
 					<input type="checkbox" class="check_input" /><span>Recordarme</span>
-				</form>
-				<form id="crear_cuenta">
+				</div>
+				<div class="form" id="crear_cuenta">
 					<input
 						type="name"
 						placeholder="Ingrese su nombre de usuario"
 						class="text_input"
 						id="registerUserName"
-						required
+						
 					/>
 					<input
 						type="email"
 						placeholder="Ingrese su correo electrónico: ejemplo@ejemplo.com"
 						class="text_input"
 						id="userEmail"
-						required
+						
 					/>
 					<input
 						type="password"
 						placeholder="Ingrese su contraseña"
 						class="text_input"
 						id="registerPassword"
-						required
+						
 					/>
-					<button type="submit" class="submit_btn" id="registerBtn" disabled>Crear cuenta</button>
+					<button type="submit" class="submit_btn" id="registerBtn" disabled onclick="onLogin()">Crear cuenta</button>
 					<input type="checkbox" class="check_input" required /><span
 						>Acepto los terminos y condiciones.</span
 					>
-				</form>
+				</div>
 			</div>
 		</div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  
 </body>
 </html>
