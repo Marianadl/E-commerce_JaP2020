@@ -78,8 +78,9 @@
                         type="submit" 
 						class="submit_btn"
 						id="loginBtn"
-						disabled
-						onclick="onLogin()"						
+						onmouseover="checkLoginForm()"
+						onclick="onLogin()"
+										
 					 > Iniciar sesión
 					</button>
 						<a href="">Olvidé mi contraseña</a>
@@ -107,9 +108,15 @@
 						id="registerPassword"
 						
 					/>
-					<button type="submit" class="submit_btn" id="registerBtn" disabled onclick="onLogin()">Crear cuenta</button>
-					<input type="checkbox" class="check_input" required /><span
-						>Acepto los terminos y condiciones.</span
+					<input
+					type="password"
+					placeholder="Confirme su contraseña"
+					class="text_input"
+					id="registerPassword2"
+					/>
+					<button type="submit" class="submit_btn" id="registerBtn" onmouseover="checkRegisterForm()" onclick="onRegister()">Crear cuenta</button>
+					<input type="checkbox" class="check_input" id = "registerCheckBox" /><span
+						>Acepto los <a href=""> términos y condiciones.</a></span
 					>
 				</div>
 			</div>

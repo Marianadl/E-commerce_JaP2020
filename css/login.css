@@ -11,12 +11,12 @@
 }
 .login_form {
 	width: 30%;
-	height: 60%;
+	height: 70%;
 	background: transparent;
 	padding: 5px;
 	position: absolute;
-	top: 150px;
-	right: 5%;
+	top: 130px;
+	right: 10%;
 	overflow: hidden;
 }
 .btns {
