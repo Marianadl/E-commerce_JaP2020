@@ -39,6 +39,7 @@ var getJSONData = function(url){
         return result;
     });
 }
+
 // función sign out google
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
@@ -46,6 +47,12 @@ function signOut() {
     window.localStorage.clear()
     console.log('User signed out.');
     location.href ="index.html";
+    
+  });
+}
+function onLoad() {
+  gapi.load('auth2', function() {
+    gapi.auth2.init();
   });
 }
 
@@ -53,4 +60,5 @@ function signOut() {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    
 });
