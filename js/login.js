@@ -10,7 +10,7 @@ var registerOpt = document.getElementById('crear_cuenta');
 // función onclick btn Crear Cuenta
 function cc() {
     loginOpt.style.top = '80%';
-    registerOpt.style.top = '-50%';
+    registerOpt.style.top = '-60%';
 }
 // función onclick btn Iniciar Sesion
 function is() {
@@ -20,12 +20,12 @@ function is() {
 
 //función onClick del login p/ redirección
 function onLogin() {
-    window.location.href="index.html";
+    window.location.href="cover.html";
             }; 
 
 //función onClick del register p/ redirección
 function onRegister() {
-    window.location.href="login.html"
+    window.location.href="index.html"
 };
 
 
