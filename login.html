@@ -6,6 +6,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <!--Google sign in meta and script tags  -->
+  <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="18366120494-1u7i3i4s3leb1qpqp5i631plmm5vopp3.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -83,6 +87,14 @@
 										
 					 > Iniciar sesión
 					</button>
+<!-- Google Sign in div && script -->
+					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+					<script>
+						function onSignIn(googleUser) {
+						  // Useful data for your client-side scripts:
+						  window.location.href="index.html";
+						}
+					  </script>
 						<a href="">Olvidé mi contraseña</a>
 					<input type="checkbox" class="check_input" /><span>Recordarme</span>
 				</div>
@@ -124,6 +136,6 @@
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
-  
+
 </body>
 </html>
