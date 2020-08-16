@@ -28,6 +28,12 @@ function onRegister() {
     window.location.href="index.html"
 };
 
+// sing in google
+function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    window.location.href="cover.html";
+  }
+
 
 // validación login form
 var userName = document.getElementById("userName");
