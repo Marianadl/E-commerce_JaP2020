@@ -25,30 +25,33 @@
       </div>
     </nav>
 <main>
-  <div class="text-center p-4">
+  
+  <div class="text-center p-4" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
     <h2>Productos</h2>
     <p class="lead">Verás aquí todas los productos disponibles en el sitio.</p>
 </div>
+<hr>
 <!-- Formato tomado de categories.html y adaptado. Se cambiaron class e id-->
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
       <div class="col text-right">
-          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-              <label class="btn btn-light" id="sortByCost" >
-                  <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>Precio <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
-              </label>
-              <label class="btn btn-light" id="sortByCostDesc" >
-                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Precio
-            </label>
-              <label class="btn btn-light" id="sortBySoldCount" >
-                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
-            </label>
-          </div>
+          
       </div>
-  </div>
+  </div> -->
   <div class="row justify-content-end">
-    <div class="col-md-6"></div>
-      <div class="col-md-6 col-sm-12 mb-1 container">
+    <!-- <div class="col-md-6"></div> -->
+    <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+      <label class="btn btn-light" id="sortByCost" >
+          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>Precio <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
+      </label>
+      <label class="btn btn-light" id="sortByCostDesc" >
+        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Precio
+    </label>
+      <label class="btn btn-light" id="sortBySoldCount" >
+        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
+    </label>
+  </div>
+      <div class="col-md-6 col-sm-12 mb-1 mr-0 container">
         <div class="row container p-0 m-0">
           <div class="col">
             <p class="font-weight-normal text-right my-2">Precio</p>
