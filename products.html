@@ -12,7 +12,9 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-  </head>
+     <!-- Estilos dropdown Nombre usuario/Cerrar sesion-->
+     <link rel="stylesheet" href="css/dropdown-nav.css">
+    </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -21,11 +23,15 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
+        <div id="dropdown-contain">
+          <a class="py-2 d-none d-md-inline-block" id="ingreso"><i class= "fa fa-caret-down"></i></a>
+         <div id="dropdown-content">
+           <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
+         </div>
+       </div>
       </div>
     </nav>
-<main>
-  
+<main>  
   <div class="text-center p-4" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
     <h2>Productos</h2>
     <p class="lead">Verás aquí todas los productos disponibles en el sitio.</p>
@@ -33,28 +39,49 @@
 <hr>
 <!-- Formato tomado de categories.html y adaptado. Se cambiaron class e id-->
 <div class="container">
-  <!-- <div class="row">
-      <div class="col text-right">
-          
-      </div>
-  </div> -->
-  <div class="row justify-content-end">
+  <div class="row justify-content-end mb-4">
+    
+    <div class="p-0">
+      <label class="mb-0">
+        <button type="submit" class="btn btn-light" onclick="buscar()"><i class="fa fa-search"></i></button>
+      </label>
+      <label class="btn-light mb-0 p-0" >
+             <input type="search" class="form-control" id="buscador" onkeyup="buscar()">
+      </label>
+    </div>
+
+
     <!-- <div class="col-md-6"></div> -->
-    <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-      <label class="btn btn-light" id="sortByCost" >
-          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>Precio <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
+    <div class="btn-group btn-group-toggle " data-toggle="buttons"  style="margin-left: auto;">
+      <label class="btn btn-light" id="sortByCost">
+          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>U$D <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
       </label>
       <label class="btn btn-light" id="sortByCostDesc" >
-        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Precio
+        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>U$D
     </label>
-      <label class="btn btn-light" id="sortBySoldCount" >
-        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
-    </label>
+    <label class="btn btn-light" id="sortBySoldCount" >
+      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
+  </label>
+
+
   </div>
-      <div class="col-md-6 col-sm-12 mb-1 mr-0 container">
+
+
+
+
+
+
+
+
+  <div class="col-md-6 col-sm-12 mb-1 mr-0 container" style="margin-left: 0;" >
+        
+
+
         <div class="row container p-0 m-0">
+
+
           <div class="col">
-            <p class="font-weight-normal text-right my-2">Precio</p>
+            <p class="font-weight-normal text-right my-2">Precio:</p>
           </div>
           <div class="col">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
