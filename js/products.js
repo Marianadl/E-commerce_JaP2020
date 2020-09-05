@@ -47,6 +47,7 @@ function showProductsList() {
     for (let i = 0; i < productsArray.length; i++) {
         let product = productsArray[i];
 
+        //Condicional para filtro de busqueda segun nombre y/o descripción
         if (((buscados == undefined) || (product.name.toUpperCase().indexOf(buscados) !== -1) || (product.description.toUpperCase().indexOf(buscados) !== -1)) //Se agrega condición para buscador
         &&((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){

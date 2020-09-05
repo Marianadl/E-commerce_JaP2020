@@ -15,6 +15,7 @@ var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+// fetch. En cada js que lo necesito lo llamo con el nombre de la var dentro de un addEventListener.
 var getJSONData = function(url){
     var result = {};
     showSpinner();

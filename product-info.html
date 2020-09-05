@@ -13,8 +13,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-    <!-- Estilos dropdown Nombre usuario/Cerrar sesion-->
-    <link rel="stylesheet" href="css/dropdown-nav.css">
+  <!-- Estilos dropdown Nombre usuario/Cerrar sesion-->
+  <link rel="stylesheet" href="css/dropdown-nav.css">
 
 </head>
 
@@ -27,21 +27,91 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       <div id="dropdown-contain">
-        <a class="py-2 d-none d-md-inline-block" id="ingreso"><i class= "fa fa-caret-down"></i></a>
-       <div id="dropdown-content">
-         <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
-       </div>
-     </div>
+        <a class="py-2 d-none d-md-inline-block" id="ingreso"><i class="fa fa-caret-down"></i></a>
+        <div id="dropdown-content">
+          <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
+
+  <main role="main" class="pb-5">
+    <!-- encabezado tomado de category-info.html y adaptado -->
+    <div class="text-center p-4" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;" >
+      <h2>Descripción del producto</h2>
+      <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+      </div>
+    <div class="container mt-5">
+      <div class="text-center">
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
+        seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
+      </div>
+
+      <!--Contenido info  -->
+
+
+      <h3 id="prodName"></h3>
+      <hr class="my-3">
+      <dl>
+        <dd>
+          <div class="row">
+            <div class="col-3">
+              <img id="frontImg" src="" class="img-thumbnail">
+            </div>
+            <div class="col">
+              <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1" id="prodTitle"></h4>
+                <medium class="text-muted" id="venididos"></medium>
+              </div>
+              <p class="mb-1" id="prodDescr"> <br></p>
+            </div>
+
+          </div>
+        </dd>
+        <hr class="my-3">
+        <br>
+        <dt><h5>Imágenes ilustrativas :</h5></dt>
+
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          </div>
+        </dd>
+
+
+        <!-- Muestro productos relacionados: -->
+        <dt><h5>Productos relacionados :</h5></dt>
+
+        <dd>
+          <div class="row pt-2" id="prodRel">
+
+
+          </div>
+        </dd>
+      </dl>
+      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a productos</a>
+    </div>
+    
+
+
+
+
+
+  </main>
+
+
+
+
+
+  <!-- <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+  </div> -->
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
