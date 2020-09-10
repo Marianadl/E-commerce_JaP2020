@@ -76,9 +76,19 @@
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
         </dd>
+        <style>
+          #frontImg:hover, #productImagesGallery img:hover {
+            transition: transform .5s ease-in-out;
+            transform: scale(1.5);
+            position: relative;
+            z-index: 1;
+            
+          }
+        </style>
 
 
         <!-- Muestro productos relacionados: -->
+        <hr>
         <dt><h5>Productos relacionados :</h5></dt>
 
         <dd>
@@ -86,15 +96,25 @@
 
 
           </div>
+          <br>
         </dd>
+
+        <!-- Comentarios-->
+        <hr>
+      <dt><h5>Comentarios: </h5></dt>
+      
+      <dd>
+        <div class="row pt-2" id="comments"></div>
+      </dd>
+      
+
+      
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a productos</a>
     </div>
     
 
-
-
-
+      
 
   </main>
 
