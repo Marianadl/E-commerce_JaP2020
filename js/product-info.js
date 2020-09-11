@@ -1,4 +1,5 @@
 var producto = {};
+var comentarios = {};
 
 function showImagesGallery(array) {
 
@@ -19,6 +20,67 @@ function showImagesGallery(array) {
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
+
+// Nuevo comentario:
+var nuevoComentario = []; // va a contener el nvo comentario
+var starScore = {};
+
+function nvoCom() {
+    nuevoComentario.description = document.getElementById("comentario").value;
+    nuevoComentario.score = starScore.value;
+    nuevoComentario.user = localStorage.getItem("user");
+    comentarios.push(nuevoComentario);
+    mostrar(comentarios);
+    document.getElementById("comentario").value = "";
+    limpiaEstrellas(document.getElementsByName("rating"));
+    
+    function limpiaEstrellas(array){
+        for (i = 0; i<array.length; i++) {
+            document.getElementsByName("rating")[i].checked = false;
+        }
+    }
+           
+} 
+function mostrar(comentarios) {
+    let comments = document.getElementById("comments");
+    let commentToAppend = "";
+  
+
+    for (comentario of comentarios) {
+        commentToAppend += `
+    
+    
+    <div class="list-group-item-action w-75 m-auto">
+    </br>
+    <div class="card p-3">
+    <div class="mb-2"></div>
+        <div class="d-flex justify-content-between align-items-center">
+        
+        <h5 class="font-weight-bold mb-1"><i class= "fa fa-user-circle m-2" ></i>  ` + comentario.user + ` : </h5>
+            <medium>` + showRating(comentario.score) + `</medium>
+       </div>
+       <p> ` + comentario.description + `</p>
+       <small class="text-muted mb-0"> ` + comentario.dateTime + `</small>
+    </div>
+    </div>`
+    
+    comments.innerHTML = commentToAppend; 
+}}
+
+ // Funcion para mostrar estrellas
+ function showRating() {
+    starsRating = " ";
+                                                          
+    for (y = 0; y < comentario.score; y++) {
+        starsRating += `<i class="fa fa-star" style="color: #F6BA17;"></i>`
+    }
+    for (x = 0; x < (5 - comentario.score); x++) {
+        starsRating += `<i class="fa fa-star"></i>`
+    }
+    
+    return starsRating;
+}
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -79,48 +141,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
             // getJSONData para mostrar comentarios
             getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
                 if (resultObj.status === "ok") {
-                    const comentarios = resultObj.data;
-                    let commentToAppend = " ";
-                    let comments = document.getElementById("comments");
-
-                    for (comentario of comentarios) {
-                        commentToAppend += `
-                        
-                    <div class="list-group-item-action w-75 m-auto">
-                    </br>
-                    <div class="card p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                        <h5 class=font-weight-bold text-primary mb-1"> ` + comentario.user + ` : </h5>
-                            <medium>` + showRating(comentario.score) + `</medium>
-                       </div>
-                       <p> ` + comentario.description + `</p>
-                       <small class="text-muted mb-0"> ` + comentario.dateTime + `</small>
-                    </div>
-                    </div>`
-
-                        // Funcion para mostrar estrellas
-                        function showRating() {
-                            starsRating = " ";
-                                                                                  
-                            for (y = 0; y < comentario.score; y++) {
-                                starsRating += `<i class="fa fa-star" style="color: yellow;"></i>`
-                            }
-                            for (x = 0; x < (5 - comentario.score); x++) {
-                                starsRating += `<i class="fa fa-star"></i>`
-                            }
-                            
-                            return starsRating;
-                        }
-                    }
-                    comments.innerHTML += commentToAppend;
-
-
-
-                    // Toma el usuario ingresado y lo muestra en la barra nav
-                    var usuario = localStorage.getItem("user");
-                    document.getElementById("ingreso").innerHTML = usuario + ' <i class= "fa fa-caret-down"></i> ';
-                };
+                    comentarios = resultObj.data;
+                    mostrar(comentarios);
+                    };
+                });
             });
         });
-    });
+
+   
+    // Toma el usuario ingresado y lo muestra en la barra nav
+    var usuario = localStorage.getItem("user");
+    document.getElementById("ingreso").innerHTML = usuario + ' <i class= "fa fa-caret-down"></i> ';
+    if (localStorage.getItem("avatar") != null) {
+        document.getElementById("avatarImg").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="50" class="rounded-circle m-2">`;
+    } else { document.getElementById("avatarImg").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; }
+    document.getElementById("uComment").innerHTML += usuario; 
+        
+    
 });
+

@@ -37,14 +37,15 @@
 
   <main role="main" class="pb-5">
     <!-- encabezado tomado de category-info.html y adaptado -->
-    <div class="text-center p-4" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;" >
+    <div class="text-center p-4"
+      style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
       <h2>Descripción del producto</h2>
       <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
-      </div>
+    </div>
     <div class="container mt-5">
       <div class="text-center">
         <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
-        seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
+          seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
       </div>
 
       <!--Contenido info  -->
@@ -70,26 +71,31 @@
         </dd>
         <hr class="my-3">
         <br>
-        <dt><h5>Imágenes ilustrativas :</h5></dt>
+        <dt>
+          <h5>Imágenes ilustrativas :</h5>
+        </dt>
 
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
         </dd>
         <style>
-          #frontImg:hover, #productImagesGallery img:hover {
+          #frontImg:hover,
+          #productImagesGallery img:hover {
             transition: transform .5s ease-in-out;
             transform: scale(1.5);
             position: relative;
             z-index: 1;
-            
+
           }
         </style>
 
 
         <!-- Muestro productos relacionados: -->
-        <hr>
-        <dt><h5>Productos relacionados :</h5></dt>
+        <hr class="my-3">
+        <dt>
+          <h5>Productos relacionados :</h5>
+        </dt>
 
         <dd>
           <div class="row pt-2" id="prodRel">
@@ -100,21 +106,79 @@
         </dd>
 
         <!-- Comentarios-->
-        <hr>
-      <dt><h5>Comentarios: </h5></dt>
-      
-      <dd>
-        <div class="row pt-2" id="comments"></div>
-      </dd>
-      
+        <hr class="my-3">
+        <dt>
+          <h5>Comentarios: </h5>
+        </dt>
 
-      
-      </dl>
-      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a productos</a>
+        <dd>
+          <div class="row pt-2" id="comments"></div>
+        </dd>
+
+        <!-- Ingresar nuevo comentario -->
+        <hr class="my-3">
+        <dt>
+          <h5>Dejanos tu opinion:</h5>
+          <br>
+        </dt>
+        <dd>
+          <div class="card p-4 m-auto" 
+          style="width: 75%; background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100%";>
+            <div class="row align-items-center">
+              <div id="avatarImg" class="mb-2"></div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="font-weight-bold" id="uComment"></h5>
+                
+                </div>
+                <div class="puntaje m-4">
+                  <input type="radio" name="rating" value="5" id="5" onclick="starScore.value = document.getElementById('5').value"><label for="5" class="fa fa-star"></label>
+                  <input type="radio" name="rating" value="4" id="4" onclick="starScore.value = document.getElementById('4').value"><label for="4" class="fa fa-star"></label>
+                  <input type="radio" name="rating" value="3" id="3" onclick="starScore.value = document.getElementById('3').value"><label for="3" class="fa fa-star"></label>
+                  <input type="radio" name="rating" value="2" id="2" onclick="starScore.value = document.getElementById('2').value"><label for="2" class="fa fa-star"></label>
+                  <input type="radio" name="rating" value="1" id="1" onclick="starScore.value = document.getElementById('1').value"><label for="1" class="fa fa-star"></label>
+                </div>
+                  <!-- Estilos estrellas -->
+                  <style>
+                    .puntaje {
+                      direction: rtl;
+                      unicode-bidi: bidi-override;
+                    }
+
+                   .puntaje>input {
+                     display: none;
+
+                    }
+
+                   label:hover,
+                   label:hover~label {
+                      color: #F6BA17;
+                    }
+
+                   input[type="radio"]:checked~label {
+                      color: #F6BA17;
+                    }
+                   </style>
+            </div>
+            <div class="comment-area">
+            <textarea name="" id="comentario" cols="50" rows="5" placeholder="Deje su comentario"></textarea>
+            </div>
+            <div class="bttn-area">
+              <button class="btn btn-success  m-3" style="background-color: #d33a57; border-color: #ec9ca7;" onclick="nvoCom()">Enviar comentario</button>
+            </div>
+
+          </div>
+    </div>
     </div>
     
+    </dd>
 
-      
+
+    </dl>
+    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a productos</a>
+    </div>
+
+
+
 
   </main>
 
