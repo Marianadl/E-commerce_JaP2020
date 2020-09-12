@@ -1,5 +1,7 @@
-var producto = {};
-var comentarios = {};
+var producto = {}; // va a contener data de PRODUCT_INFO_URL para mostrar info del producto
+var productos = {}; // va a contener data de PRODUCTS_URL para mostrar productos relacionados
+var comentarios = {}; // va a contener data de PRODUCT_INFO_COMMENTS_URL para mostrar comentarios
+    
 
 function showImagesGallery(array) {
 
@@ -21,18 +23,43 @@ function showImagesGallery(array) {
     }
 }
 
+
+
+
 // Nuevo comentario:
 var nuevoComentario = []; // va a contener el nvo comentario
 var starScore = {};
 
+
 function nvoCom() {
+    
+    // definir fecha y hora de comentario:
+comDateTime = new Date();
+let year = comDateTime.getFullYear();
+let month = comDateTime.getMonth() + 1; // +1 porque Enero es 0
+var mes;  
+if (month  < 10) { mes  = '0' + month } else { mes = month}; // Agrego un 0 delante si el nro no es de dos cifras
+let  day = comDateTime.getDate();
+var dia;
+if (day < 10) { dia = '0' + day} else { dia = day}; // Agrego un 0 delante si el nro no es de dos cifras
+let hour = comDateTime.getHours();
+var hora;
+if (hour < 10) { hora = '0' + hour} else { hora = hour}; // Agrego 0 delante si el nro no es de dos cifras
+let minutes = comDateTime.getMinutes();
+var minutos;
+if ( minutes < 10) { minutos = '0' + minutes} else { minutos = minutes}; // Agrego 0 delante si el nro no es de dos cifras
+let seconds = comDateTime.getSeconds();
+var segundos;
+if ( seconds < 10) { segundos = '0' + seconds} else { segundos = seconds}; // Agrego 0 delante si el nro no es de dos cifras
+    
     nuevoComentario.description = document.getElementById("comentario").value;
     nuevoComentario.score = starScore.value;
     nuevoComentario.user = localStorage.getItem("user");
+    nuevoComentario.dateTime = year + '-' + mes + '-' + dia + ' ' + hora + ':' + minutos + ':' + segundos;
     comentarios.push(nuevoComentario);
     mostrar(comentarios);
-    document.getElementById("comentario").value = "";
-    limpiaEstrellas(document.getElementsByName("rating"));
+    document.getElementById("comentario").value = ""; // Limpia el texto del textarea de comentario una vez enviado
+    limpiaEstrellas(document.getElementsByName("rating")); // Limpia las estrellas una vez enviado el comentario
     
     function limpiaEstrellas(array){
         for (i = 0; i<array.length; i++) {
@@ -40,11 +67,13 @@ function nvoCom() {
         }
     }
            
+    
+
+    
 } 
 function mostrar(comentarios) {
     let comments = document.getElementById("comments");
     let commentToAppend = "";
-  
 
     for (comentario of comentarios) {
         commentToAppend += `
@@ -64,7 +93,7 @@ function mostrar(comentarios) {
     </div>
     </div>`
     
-    comments.innerHTML = commentToAppend; 
+    comments.innerHTML = commentToAppend; // = y no += para que no repita los comentarios
 }}
 
  // Funcion para mostrar estrellas
@@ -112,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 var productos = resultObj.data;
                 var productosRel = producto.relatedProducts;
                 let prodRelAppend = "";
-                let prodRel = document.getElementById("prodRel"); // Contenedor del html a agregar (prodRelAppend)
+                let prodRel = document.getElementById("prodRel"); // Contenedor donde agregar  nvo contenido html (prodRelAppend)
 
                 // forEach method, por cada elemento del array productosRel ejecuta la funcion
                 productosRel.forEach(function (e) {
@@ -141,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             // getJSONData para mostrar comentarios
             getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
                 if (resultObj.status === "ok") {
-                    comentarios = resultObj.data;
+                   comentarios = resultObj.data;
                     mostrar(comentarios);
                     };
                 });
@@ -149,13 +178,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
 
    
-    // Toma el usuario ingresado y lo muestra en la barra nav
-    var usuario = localStorage.getItem("user");
-    document.getElementById("ingreso").innerHTML = usuario + ' <i class= "fa fa-caret-down"></i> ';
+    
+    var usuario = localStorage.getItem("user"); // // Toma el usuario ingresado de localStorage y define variable 'usuario'
+    document.getElementById("ingreso").innerHTML = usuario + ' <i class= "fa fa-caret-down"></i> '; // inserta var usuario y flecha en dropdown de barra nav
     if (localStorage.getItem("avatar") != null) {
         document.getElementById("avatarImg").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="50" class="rounded-circle m-2">`;
-    } else { document.getElementById("avatarImg").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; }
-    document.getElementById("uComment").innerHTML += usuario; 
+    } else { document.getElementById("avatarImg").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; } // Define imagen de usuario para textarea de comentarios product-info.html
+    document.getElementById("uComment").innerHTML += usuario; // Define nombre de usuario para textarea de comentarios product-info.html
         
     
 });
