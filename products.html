@@ -40,7 +40,7 @@
 
 
 <main role= "main" class="pb-5">  
-  <div class="text-center p-4" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
+  <div class="text-center p-4" role="banner" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
     <h2>Productos</h2>
     <p class="lead">Verás aquí todas los productos disponibles en el sitio.</p>
 </div>
@@ -50,11 +50,12 @@
   <div class="row justify-content-end mb-4">
     
     <div class="p-0">
-      <label class="mb-0">
-        <i class="fa fa-search p-2"></i>
+      <label class="mb-0" for="icono-de-busqueda">
+        <!-- aria-hidden:true para que esconda el icono cuando se usa screan-reader -->
+        <i class="fa fa-search p-2" aria-hidden="true"></i> 
       </label>
-      <label class="btn-light mb-0 p-0" >
-             <input type="search" class="form-control" id="buscador" onkeyup="buscar()">
+      <label class="btn-light mb-0 p-0" for="input-de-busqueda" >
+             <input type="search" class="form-control" id="buscador" onkeyup="buscar()" aria-label="Busca-en-producos" placeholder="Busque su producto">
       </label>
     </div>
 
