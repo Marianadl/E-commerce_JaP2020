@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 var productos = resultObj.data;
                 var productosRel = producto.relatedProducts;
                 let prodRelAppend = "";
-                let prodRel = document.getElementById("prodRel"); // Contenedor donde agregar  nvo contenido html (prodRelAppend)
+                let prodRel = document.getElementById("prodRel"); // Contenedor donde agregar nvo contenido html (prodRelAppend)
 
                 // forEach method, por cada elemento del array productosRel ejecuta la funcion
                 productosRel.forEach(function (e) {
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
    
     
     var usuario = localStorage.getItem("user"); // // Toma el usuario ingresado de localStorage y define variable 'usuario'
-    document.getElementById("ingreso").innerHTML = usuario + ' <i class= "fa fa-caret-down"></i> '; // inserta var usuario y flecha en dropdown de barra nav
+    document.getElementById("ingreso").innerHTML = usuario; // inserta var usuario y flecha en dropdown de barra nav
     if (localStorage.getItem("avatar") != null) {
         document.getElementById("avatarImg").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="50" class="rounded-circle m-2">`;
     } else { document.getElementById("avatarImg").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; } // Define imagen de usuario para textarea de comentarios product-info.html

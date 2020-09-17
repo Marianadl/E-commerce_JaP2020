@@ -29,8 +29,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
-          <!-- Estilos dropdown Nombre usuario/Cerrar sesion-->
-   <link rel="stylesheet" href="css/dropdown-nav.css">
    </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
@@ -39,13 +37,18 @@
             <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
             <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
             <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
             <div id="dropdown-contain">
-              <a class="py-2 d-none d-md-inline-block" id="ingreso"><i class= "fa fa-caret-down"></i></a>
-             <div id="dropdown-content">
-               <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
-             </div>
-           </div>
+              <button class="btn btn-secondary dropdown-toggle" id="ingreso" type="button" data-toggle="dropdown"
+                aria-expanded="false" aria-haspopup="true"></button>
+              <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
+                <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i></a>
+                <a class="dropdown-item" href="cart.html"> Mi perfil <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i
+                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
          </div>
     </nav>
     <div class="container" style="margin: 0%; max-width: 100%; padding: 0%;" >

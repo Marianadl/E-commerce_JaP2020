@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -32,29 +32,35 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
-  <link href="css/dropdown-nav.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-1 bg-dark" aria-label="Navigation bar">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+
       <div id="dropdown-contain">
-        <a class="py-2 d-none d-md-inline-block" id="ingreso"><i class= "fa fa-caret-down"></i></a>
-       <div id="dropdown-content">
-         <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Cerrar sesión</a>
-       </div>
-     </div>
+        <button class="btn btn-secondary dropdown-toggle" id="ingreso" type="button" data-toggle="dropdown"
+          aria-expanded="false" aria-haspopup="true"></button>
+        <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
+          <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart"
+              aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="cart.html"> Mi perfil <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i
+              class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </div>
   </nav>
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
+      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega:
+        25/10/2020).</p>
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
