@@ -1,6 +1,6 @@
 var producto = {}; // va a contener data de PRODUCT_INFO_URL para mostrar info del producto
 var productos = {}; // va a contener data de PRODUCTS_URL para mostrar productos relacionados
-var comentarios = {}; // va a contener data de PRODUCT_INFO_COMMENTS_URL para mostrar comentarios
+var comentarios = []; // va a contener data de PRODUCT_INFO_COMMENTS_URL para mostrar comentarios
     
 
 function showImagesGallery(array) {
@@ -27,7 +27,7 @@ function showImagesGallery(array) {
 
 
 // Nuevo comentario:
-var nuevoComentario = []; // va a contener el nvo comentario
+var nuevoComentario = {}; // va a contener el nvo comentario
 var starScore = {};
 
 
@@ -52,11 +52,16 @@ let seconds = comDateTime.getSeconds();
 var segundos;
 if ( seconds < 10) { segundos = '0' + seconds} else { segundos = seconds}; // Agrego 0 delante si el nro no es de dos cifras
     
+// Obtengo y guardo los valores:
     nuevoComentario.description = document.getElementById("comentario").value;
     nuevoComentario.score = starScore.value;
     nuevoComentario.user = localStorage.getItem("user");
     nuevoComentario.dateTime = year + '-' + mes + '-' + dia + ' ' + hora + ':' + minutos + ':' + segundos;
+// Agrego los valores al final 
     comentarios.push(nuevoComentario);
+//Guardo los comentarios en local Storage
+    localStorage.setItem("comentarios",JSON.stringify(comentarios));
+// Llamo funcion para mostrar los comentarios
     mostrar(comentarios);
     document.getElementById("comentario").value = ""; // Limpia el texto del textarea de comentario una vez enviado
     limpiaEstrellas(document.getElementsByName("rating")); // Limpia las estrellas una vez enviado el comentario
@@ -74,7 +79,8 @@ if ( seconds < 10) { segundos = '0' + seconds} else { segundos = seconds}; // Ag
 function mostrar(comentarios) {
     let comments = document.getElementById("comments");
     let commentToAppend = "";
-
+    //Si hago el parse no me muestra los comentarios ¿?
+    // var comentarios = JSON.parse(localStorage.getItem("comentarios")); // Obtengo los comentarios de localStorage
     for (comentario of comentarios) {
         commentToAppend += `
     
@@ -111,6 +117,39 @@ function mostrar(comentarios) {
 }
 
 
+// Funcion para carrousel de imagenes del producto
+function imgCarousel() {
+        
+    let carousel = " ";
+    let array= producto.images;
+        
+        for (i = 1 ; i < array.length ; i++) {
+        console.log("Empezo carousel"); // Probando si entra ok al for
+        
+        carousel += `
+        
+        <div class="carousel-item">
+            <img src=" ` + producto.images[i] + `" class="img-thumbnail">
+        </div> `
+            /* <div class="carousel-item">
+                <img class="img-thumbnail" src="` + producto.images[2] + `" alt="">
+            </div>
+            <div class="carousel-item">
+                <img class="img-thumbnail" src="` + producto.images[3] + `" alt="">
+            </div>
+            <div class="carousel-item">
+                <img class="img-thumbnail" src="` + producto.images[4] + `" alt="">
+            </div>
+        </div>
+        `
+*/
+    }
+    document.getElementById("carouselContainer").innerHTML += carousel;
+}
+
+
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -134,6 +173,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(producto.images);
+            // Muestro las imagenes en carrousel
+            imgCarousel();
         }
         // getJSONData para mostrar productos relacionados
         getJSONData(PRODUCTS_URL).then(function (resultObj) {
@@ -171,13 +212,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
             getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
                 if (resultObj.status === "ok") {
                    comentarios = resultObj.data;
-                    mostrar(comentarios);
+                   mostrar(comentarios);
                     };
                 });
             });
         });
 
-   
+       
+
     
     var usuario = localStorage.getItem("user"); // // Toma el usuario ingresado de localStorage y define variable 'usuario'
     document.getElementById("ingreso").innerHTML = usuario; // inserta var usuario y flecha en dropdown de barra nav
@@ -185,7 +227,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById("avatarImg").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="50" class="rounded-circle m-2">`;
     } else { document.getElementById("avatarImg").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; } // Define imagen de usuario para textarea de comentarios product-info.html
     document.getElementById("uComment").innerHTML += usuario; // Define nombre de usuario para textarea de comentarios product-info.html
-        
-    
+    // Avatar para dropdown:
+    if (localStorage.getItem("avatar") != null) {
+        document.getElementById("ingreso").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="15" class="rounded-circle m-2">`;    
+    } else { document.getElementById("ingreso").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; };
 });
 

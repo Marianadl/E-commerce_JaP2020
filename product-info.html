@@ -18,8 +18,8 @@
 
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
+    <div class="container d-flex flex-column flex-md-row justify-content-between" >
+      <a class="py-2 d-none d-md-inline-block" href="cover.html" style="vertical-align: center;">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
@@ -59,9 +59,16 @@
       <dl>
         <dd>
           <div class="row">
-            <div class="col-3">
-              <img id="frontImg" src="" class="img-thumbnail">
+            <div  class="col-3 carousel slide" data-ride="carousel"  data-interval="2000">
+              
+              <div class="carousel-inner" id="carouselContainer">
+                
+                <div class="carousel-item active">
+                  <img id="frontImg" src="" class="img-thumbnail" >
+        </div>
+              </div>
             </div>
+          
             <div class="col">
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-1" id="prodTitle"></h4>
