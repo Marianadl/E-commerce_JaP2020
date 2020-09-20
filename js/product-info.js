@@ -30,9 +30,10 @@ function showImagesGallery(array) {
 
 var starScore = {};
 
-
 function nvoCom() {
+    
 var nuevoComentario = {}; // va a contener el nvo comentario
+
     // definir fecha y hora de comentario:
 comDateTime = new Date();
 let year = comDateTime.getFullYear();
@@ -79,9 +80,10 @@ if ( seconds < 10) { segundos = '0' + seconds} else { segundos = seconds}; // Ag
 function mostrar(comentarios) {
     let comments = document.getElementById("comments");
     let commentToAppend = "";
-    //Si hago el parse no me muestra los comentarios ¿?
+    /* Si ejecuto JSON.parse no muestra los comentarios 
     var comentarios = JSON.parse(localStorage.getItem("comentarios")); // Obtengo los comentarios de localStorage
-    for (comentario of comentarios) {
+    */
+   for (comentario of comentarios) {
         commentToAppend += `
     
     
@@ -99,8 +101,9 @@ function mostrar(comentarios) {
     </div>
     </div>`
     
+    }
     comments.innerHTML = commentToAppend; // = y no += para que no repita los comentarios
-}}
+}
 
  // Funcion para mostrar estrellas
  function showRating() {
