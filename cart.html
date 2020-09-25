@@ -48,14 +48,24 @@
         <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
           <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart"
               aria-hidden="true"></i></a>
-          <a class="dropdown-item" href="cart.html"> Mi perfil <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle" aria-hidden="true"></i></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking" aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </nav>
-  <div class="container p-5">
+  <main role="main" class="pb-5">
+    <div class="text-center p-4" role="banner"
+      style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
+      <h2>Mi carrito</h2>
+      <p class="lead">Encontrarás aquí todos los articulos de tu carrito</p>
+    </div>
+  <div id="cart-info-container" class="container mt-5">
+
+  </div>
+</main>
+  <!-- <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega:
@@ -63,7 +73,18 @@
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+  </div> -->
+
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
