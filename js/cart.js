@@ -160,7 +160,7 @@ function mostrarArticulos(articulos) {
             <td colspan="2" style="vertical-align:middle; text-align:center;">
             <button type="button" id="finalizarBtn" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="width: 80%; background-color: #d33a57; border-color: #ec9ca7;"  disabled> 
   Finalizar compra</button>
-  <div id="finalModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Mensaje: Muchas gracias por su compra" aria-hidden="true" >
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Mensaje: Muchas gracias por su compra" aria-hidden="true" >
   <div class="modal-dialog modal-sm modal-dialog-centered" >
     <div class="modal-content" >
     <div class="modal-header" >
@@ -284,9 +284,6 @@ function shipSelect() {
         document.getElementById("shipping").innerHTML = envioAppend;
         total(); //ejecuto funcion total() para que muestre el monto de subtotal + envio cuando se seleccione el tipo de envio
         document.getElementById("finalizarBtn").disabled = false;
-        $('#finalModal').modal ({
-            
-        })
         return valorEnvio;
     }
 
