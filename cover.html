@@ -22,24 +22,29 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark " aria-label="Navigation bar">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <div id="dropdown-contain">
-          <button class="btn btn-secondary dropdown-toggle" id="ingreso" type="button" data-toggle="dropdown"
-            aria-expanded="false" aria-haspopup="true"></button>
+        <a class="navbar-brand text-light" href="cover.html">Inicio</a>
+        <a class="navbar-brand text-light" href="categories.html">Categorías</a>
+        <a class="navbar-brand text-light" href="products.html">Productos</a>
+        <a class="navbar-brand text-light" href="sell.html">Vender</a>
+  
+        <div class="navbar-brand text-light nav-item dropdown" id="dropdown-contain">
+          <a class="nav-link dropdown-toggle" id="ingreso" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" aria-label="Menu dropdown"><span class="navbar-toggler-icon"></span></a>
           <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
-            <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart"
+            <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span class="badge badge-pill badge-danger" id="prodBadge"> <!-- Pendiente poner total de unidades --></span>
+            </a>
+            <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle"
                 aria-hidden="true"></i></a>
-            <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle" aria-hidden="true"></i></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking" aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
+            <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking"
+                aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
           </div>
         </div>
-       </nav>
+      </div>
+    </nav>
     <main role="main">
       <section class="jumbotron text-center">
         <div class="m-5">
