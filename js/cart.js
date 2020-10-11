@@ -47,7 +47,7 @@ function mostrarArticulos(articulos) {
         if (i === 0) {
             toBuyAppend += `
              <!-- Encabezado de la tabla-->
-                    <thead class="thead-light" style="text-align: center;">
+                    <thead style="text-align: center; background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(211,58,87,0.9500175070028011) 100%)">
                         <tr>
                              <th scope="col"></th>
                             <th scope="col" class="font-weight-bold">
@@ -101,7 +101,7 @@ function mostrarArticulos(articulos) {
 
             <!-- Sacar del carrito -->
                     <td style="vertical-align: middle;">
-                    <button onclick="${limpiarCarrito(i)}" type="button" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background-color: #d33a57; border-color: #ec9ca7;"><i class="fa fa-times" aria-hidden="true"></i>
+                    <button onclick="${limpiarCarrito(i)}" type="button" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background: linear-gradient(to right, #ec9ca7, #d33a57);"><i class="fa fa-times" aria-hidden="true"></i>
                     </button>
                     </td>
             
@@ -152,26 +152,29 @@ function mostrarArticulos(articulos) {
             </tr>
            
             <!-- Total -->
-            <tr id="total" class="table-success">
+            <tr id="total" style="background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
                    
             </tr>
             <!-- Finalizar compra -->
             <tr>
             <td colspan="2" style="vertical-align:middle; text-align:center;">
-            <button type="button" id="finalizarBtn" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="width: 80%; background-color: #d33a57; border-color: #ec9ca7;"  disabled> 
+            <!-- Ventana modal -->
+            
+            <button type="button" id="finalizarBtn" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 "  disabled> 
   Finalizar compra</button>
   <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Mensaje: Muchas gracias por su compra" aria-hidden="true" >
-  <div class="modal-dialog modal-sm modal-dialog-centered" >
-    <div class="modal-content" >
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content" style="background: linear-gradient(to right, #ec9ca7, #d33a57);">
     <div class="modal-header" >
-    <h5 class="modal-title" >Checkout finalizado</h5>
+    <h5 class="modal-title" ><strong>Ha completado su compra</strong></h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-  ¡Gracias por su compra!
-  </div>
+  <div class="modal-body"  style="text-align: center">
+  <strong>
+  ¡Gracias por elegirnos!
+  </strong></div>
     </div>
   </div>
 </div>
@@ -184,7 +187,7 @@ function mostrarArticulos(articulos) {
     cartList.innerHTML += toBuyAppend;
     finalCost.innerHTML += finalCostData;
     shipSelect(); // Ejecuto funcion que toma valor del tipo de envío seleccionado. Tengo que ejecutarla despues de que ya está finalCostData en finalCost para que tome el id del select.
-    newBadge();
+    
 
 
 }
@@ -193,7 +196,7 @@ function mostrarArticulos(articulos) {
 function subtotalArt(i) {
 
     convPrecio(i); //para que haga conversion de moneda
-    subtotaldeArt = parseInt(articulos[i].count) * parseInt(nvoPrecio); //cantidad del articulo * el precio en dolares
+    subtotaldeArt = parseInt(articulos[i].count) * parseFloat(nvoPrecio); //cantidad del articulo * el precio en dolares
     console.log("Nro articulos:", articulos[i].count);
     console.log("Precio unitario:", nvoPrecio);
     console.log("Subtotal de producto:", subtotaldeArt)
@@ -235,6 +238,7 @@ function qtyChange(i) {
     subtotal(i);
     document.getElementById("subtotalFinal").innerHTML = ` <strong>${subtotal(i)}</strong> `
     localStorage.setItem('articulos', JSON.stringify(articulos));
+    newBadge();
     return qty;
 }
 
@@ -309,7 +313,7 @@ function total(i) {
 
 function newBadge() {
     listaProd = localStorage.getItem('articulos');
-    listaProd = JSON.parse('articulos');
+    listaProd = JSON.parse(articulos);
 
     let prodEnBadge = 0;
     for (i = 0; i < listaProd.length; i++) {
@@ -317,7 +321,7 @@ function newBadge() {
         prodEnBadge += art.count;
     }
     console.log("Cantidad prod para badge:", prodEnBadge)
-    document.getElementById("prodBadge").innerHTML = prodEnBadge;
+    document.getElementById("prodBadge").innerHTML += prodEnBadge;
 }
 
 function limpiarCarrito(i) {
