@@ -101,7 +101,7 @@ function mostrarArticulos(articulos) {
 
             <!-- Sacar del carrito -->
                     <td style="vertical-align: middle;">
-                    <button onclick="${limpiarCarrito(i)}" type="button" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background: linear-gradient(to right, #ec9ca7, #d33a57);"><i class="fa fa-times" aria-hidden="true"></i>
+                    <button onclick="${limpiarCarrito(i)}" type="button" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57"><i class="fa fa-times" aria-hidden="true"></i>
                     </button>
                     </td>
             
@@ -187,7 +187,7 @@ function mostrarArticulos(articulos) {
     cartList.innerHTML += toBuyAppend;
     finalCost.innerHTML += finalCostData;
     shipSelect(); // Ejecuto funcion que toma valor del tipo de envío seleccionado. Tengo que ejecutarla despues de que ya está finalCostData en finalCost para que tome el id del select.
-    
+    newBadge();
 
 
 }
@@ -313,15 +313,15 @@ function total(i) {
 
 function newBadge() {
     listaProd = localStorage.getItem('articulos');
-    listaProd = JSON.parse(articulos);
+    
 
     let prodEnBadge = 0;
-    for (i = 0; i < listaProd.length; i++) {
-        let art = listaProd[i];
+    for (i = 0; i < articulos.length; i++) {
+        let art = articulos[i];
         prodEnBadge += art.count;
     }
     console.log("Cantidad prod para badge:", prodEnBadge)
-    document.getElementById("prodBadge").innerHTML += prodEnBadge;
+    document.getElementById("prodBadge").innerHTML = prodEnBadge;
 }
 
 function limpiarCarrito(i) {
