@@ -312,7 +312,7 @@ function total(i) {
 }
 
 function newBadge() {
-    listaProd = localStorage.getItem('articulos');
+   // listaProd = localStorage.getItem('articulos');
     
 
     let prodEnBadge = 0;
