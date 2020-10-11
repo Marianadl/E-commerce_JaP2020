@@ -164,7 +164,7 @@ function mostrarArticulos(articulos) {
   Finalizar compra</button>
   <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Mensaje: Muchas gracias por su compra" aria-hidden="true" >
   <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content" style="background: linear-gradient(to right, #ec9ca7, #d33a57);">
+    <div class="modal-content" style="background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
     <div class="modal-header" >
     <h5 class="modal-title" ><strong>Ha completado su compra</strong></h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
