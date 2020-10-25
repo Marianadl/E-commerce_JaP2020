@@ -417,7 +417,7 @@ function total(i) {
                         </div>
                     </div>
                     </br>
-                    <button type="submit" id="finalizarBtn" class="btn btn-primary" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 "> 
+                    <button type="submit" id="finalizarBtn" class="btn btn-primary" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 " > 
                         Finalizar compra
                     </button>
                 </form>
@@ -475,18 +475,14 @@ function total(i) {
         `
 
         }
-        
+    }
         document.getElementById("pagoSeleccionado").onchange = function () {
             pagoSeleccionado();
         } //Para que se ejecute aún cuando cambio seleccion de metodo de pago luego de ya seleccionado otro anteriormente
         
-        
-    }
-
-    document.getElementById("pagoSeleccionado").onchange = function () {
+        document.getElementById("pagoSeleccionado").onchange = function () {
         pagoSeleccionado();
     } //Ejecuto funcion que muestra campos a completar segun el metodo de pago seleccionado
-    
     
     
     return montoTotal;
