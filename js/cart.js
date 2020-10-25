@@ -25,6 +25,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
             mostrarArticulos(articulos);
         }
     });
+
+    getJSONData(COUNTRIES).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            countriesList = resultObj.data
+            var opcionPais = ``;
+            for (pais of countriesList) {
+                opcionPais += ` <option>${pais.name}</option>
+            `}
+            document.getElementById("selectCountry").innerHTML += opcionPais;
+        }
+    });
 });
 
 const MONEDA = "USD";
@@ -32,43 +43,38 @@ const COTIZACION_MND = 40;
 var articulos = [];
 
 //funcion para mostrar los articulos en el carrito y la tabla de totales y envío.
-function mostrarArticulos(articulos) {
-    let toBuyAppend = "";
+function mostrarArticulos() {
+    localStorage.getItem("articulos");
+    let toBuyAppend = `
+    <!-- Encabezado de la tabla-->
+    <thead style="text-align: center; background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(211,58,87,0.9500175070028011) 100%)">
+        <tr>
+             <th scope="col"></th>
+            <th scope="col" class="font-weight-bold">
+                <strong> Artículo </strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+                <strong>Precio</strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+                <strong>Cantidad</strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+                <strong>Subtotal</strong>
+            </th>
+            <th style="width:5%";></th>
+        </tr>
+    </thead>
+    <!--Termina encabezado de la tabla--> `;
+
     cartList = document.getElementById('cart-info-container');
     let finalCostData = "";
     finalCost = document.getElementById('final-cost-info');
 
-
-
-
     for (let i = 0; i < articulos.length; i++) {
         let art = articulos[i];
 
-        if (i === 0) {
             toBuyAppend += `
-             <!-- Encabezado de la tabla-->
-                    <thead style="text-align: center; background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(211,58,87,0.9500175070028011) 100%)">
-                        <tr>
-                             <th scope="col"></th>
-                            <th scope="col" class="font-weight-bold">
-                                <strong> Artículo </strong>
-                            </th>
-                            <th scope="col" class="font-weight-bold">
-                                <strong>Precio</strong>
-                            </th>
-                            <th scope="col" class="font-weight-bold">
-                                <strong>Cantidad</strong>
-                            </th>
-                            <th scope="col" class="font-weight-bold">
-                                <strong>Subtotal</strong>
-                            </th>
-                            <th style="width:5%";></th>
-                        </tr>
-                    </thead>
-                <!--Termina encabezado de la tabla-->`
-        }
-
-        toBuyAppend += `
             <tbody style="text-align: center";>
                 
             <!-- Contenido de la tabla de artículos-->
@@ -101,7 +107,7 @@ function mostrarArticulos(articulos) {
 
             <!-- Sacar del carrito -->
                     <td style="vertical-align: middle;">
-                    <button onclick="${limpiarCarrito(i)}" type="button" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57"><i class="fa fa-times" aria-hidden="true"></i>
+                    <button type="button" onclick="limpiarCarrito(articulos, ${i});" class="btn btn-primary float-right" data-toggle="tooltip" title="Eliminar artículo" style="background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57"><i class="fa fa-times" aria-hidden="true"></i>
                     </button>
                     </td>
             
@@ -113,14 +119,11 @@ function mostrarArticulos(articulos) {
             
             
 
-        `
-
+        `    
 
         finalCostData = `
-        
-        <br>   
-        <tbody>
-            
+           
+        <tbody>           
             
             <!-- Subtotales -->
             <tr>
@@ -139,6 +142,8 @@ function mostrarArticulos(articulos) {
                 <td colspan="2" style="vetical-align: middle";>
                 
                 <form  class="was-validated">
+                <br>
+                       <div class="form-group">
                         <select id="optionSelected" class="custom-select" required>
                             <option value="" >Seleccione tipo de envío</option>
                             <option value="Premium">Premium (2-5 días) - Costo del 15% sobre el subtotal</option>
@@ -146,49 +151,67 @@ function mostrarArticulos(articulos) {
                             <option value="Standard">Standard (12 a 15 días) - Costo del 5% sobre el subtotal</option>
                         </select>
                         <div class="invalid-feedback">Debe seleccionar un método de envío para finalizar la compra</div>
-                    </form>
+                        </div>
+      
+                        
+                        <div class="form-row">
+                            
+                         <div class="form-group col-5" style="margin: auto;">
+                            
+                                <select id="selectCountry" class="custom-select" required>
+                                <option value="">Seleccione país</option>
+                                </select>
+                         </div>
+
+                        <div class="form-group col-5" style="margin: auto;">
+                            <input type="text" class="form-control" placeholder="Localidad" aria-describedby="Localidad" required>
+                            </div>
+                            </div>
+</br>
+                           <div class="form-row">
+                            
+                        
+                            <div class="form-group col-5" style="margin: auto;">
+                            <input type="text" class="form-control" placeholder="Calle" aria-describedby="Calle" required>
+                            </div>
+
+                            <div class="form-group col-5" style="margin: auto;">
+                            <input type="number" class="form-control" placeholder="Número" aria-describedby="Número" required>
+                            </div>
+                            </div>
+
+
+                        </form>
                 </td>
             
             </tr>
+            
            
             <!-- Total -->
             <tr id="total" style="background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
                    
             </tr>
-            <!-- Finalizar compra -->
-            <tr>
-            <td colspan="2" style="vertical-align:middle; text-align:center;">
-            <!-- Ventana modal -->
-            
-            <button type="button" id="finalizarBtn" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 "  disabled> 
-  Finalizar compra</button>
-  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Mensaje: Muchas gracias por su compra" aria-hidden="true" >
-  <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content" style="background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
-    <div class="modal-header" >
-    <h5 class="modal-title" ><strong>Ha completado su compra</strong></h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body"  style="text-align: center">
-  <strong>
-  ¡Gracias por elegirnos!
-  </strong></div>
-    </div>
-  </div>
-</div>
-  </td>
+            <!-- Metodo de pago -->
+            <tr id="pago">
+
             </tr>
+
+            
             </tbody>
             `
 
+            
+        
+
+
     }
-    cartList.innerHTML += toBuyAppend;
-    finalCost.innerHTML += finalCostData;
+    cartList.innerHTML = toBuyAppend;
+    finalCost.innerHTML = finalCostData;
     shipSelect(); // Ejecuto funcion que toma valor del tipo de envío seleccionado. Tengo que ejecutarla despues de que ya está finalCostData en finalCost para que tome el id del select.
     newBadge();
-
+    
+    
+    
 
 }
 
@@ -280,14 +303,15 @@ function shipSelect() {
         <h6 style="text-align: center">Costo de envio</h6>
         </td>
         <td class="text-right">
-        <h5 style="text-align: center">${MONEDA}</h5> <h5 style="text-align: center"><strong>${valorEnvio.toFixed(0)}</strong></h5>
+        <h5 style="text-align: center">${MONEDA}</h5> <h5 style="text-align: center"><strong>${valorEnvio.toFixed(1)}</strong></h5>
        </td> 
             </tr>
                `
 
         document.getElementById("shipping").innerHTML = envioAppend;
         total(); //ejecuto funcion total() para que muestre el monto de subtotal + envio cuando se seleccione el tipo de envio
-        document.getElementById("finalizarBtn").disabled = false;
+
+
         return valorEnvio;
     }
 
@@ -296,6 +320,8 @@ function shipSelect() {
 //funcion para calcular el monto final (subtotal final + valor de envio). Se ejecuta una vez seleccionado el tipo de envio
 function total(i) {
     displayTotal = "";
+    metodoPago = "";
+    metodo = '';
     montoTotal = 0;
     montoTotal = (subtotal(i) + parseInt(valorEnvio));
 
@@ -306,15 +332,172 @@ function total(i) {
                 <td style="text-align: center">
                     <h5>${MONEDA}</h5><h4 style="text-align: center"><strong>${montoTotal}</strong></h4>
         </td> 
+        
     `
+    metodoPago = ` 
+        <td colspan="2" style="vertical-align: middle; text-align: center;">
+        <button type="button" data-target="#paymentModal" data-toggle="modal" class="btn btn-primary" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57; text-align: center; vertical-align: middle;">
+            <h5>Seleccione método de pago</h5>
+        </button>
+
+        <div class="modal fade bd-example-modal-lg" id="paymentModal" data-backdrop="static" data-keyboard="false" aria-labelledby="Ventana seleccion método de pago" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" ><strong>Seleccione método de pago</strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="paymentBody">
+                        <form class="was-validated">
+                            <div class="form-group">
+                                <select class="form-control" id="pagoSeleccionado" required>
+                                    <option value="" >Seleccione método de pago</option>
+                                    <option value="crédito">Tarjeta de crédito</option>
+                                    <option value="transferencia">Transferencia bancaria</option>
+                                 </select>
+                             <div class="invalid-feedback">Debe seleccionar un método de pago</div>
+                            </div>
+                        </form>  
+                    </div>
+
+                    <div class="modal-footer" id="footer" style="margin: auto;">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </td>
+        `
+
     document.getElementById("total").innerHTML = displayTotal;
+    document.getElementById("pago").innerHTML = metodoPago;
+
+
+    function pagoSeleccionado() {
+        metodo = document.getElementById("pagoSeleccionado").value; 
+        if (metodo === "crédito") {
+            document.getElementById("paymentBody").innerHTML = `
+            <div>
+
+            <form class="was-validated">
+                <div class="form-group" >
+                    <select class="form-control" id="pagoSeleccionado" required>
+                        <option value="" >Seleccione método de pago</option>
+                        <option value="crédito" selected>Tarjeta de crédito</option>
+                        <option value="transferencia">Transferencia bancaria</option>
+                    </select>
+                    <div class="invalid-feedback">Debe seleccionar un método de pago</div>
+                </div>
+            </form>
+
+                <form class="was-validated" style="width: 80%; margin: auto;">
+                    <div class="form-row">
+                        <div class="form-group col-6"  style="margin: auto;">
+                            <label for="numTarjeta">Número de tarjeta</label>
+                            <input type="number" class="form-control" id="numTarjeta" min="0" required>
+                            <div class="invalid-feedback">Debe completar el campo</div>
+                        </div>
+                        <div class="form-group col-4"  >
+                        <label for="CVV">CVV/CVC</label>
+                        <input type="number" class="form-control" id="CVV" min="0" required>
+                        <div class="invalid-feedback">Código requerido</div>
+                    </div>
+                    </div>
+                    </br>
+                    <div class="form-row">
+                        <div class="form-group col-6" style="margin:auto;">
+                            <label for="vence">Valido hasta:</label>
+                            <input type="month" class="form-control" id="vence" min="2020-10" required>
+                            </input>
+                            <div class="invalid-feedback">Seleccione vencimiento</div>
+
+                        </div>
+                    </div>
+                    </br>
+                    <button type="submit" id="finalizarBtn" class="btn btn-primary" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 "> 
+                        Finalizar compra
+                    </button>
+                </form>
+            </div>
+
+            `
+           
+            } else if (metodo === "transferencia") {
+            document.getElementById("paymentBody").innerHTML = `
+            <div>
+
+            <form class="was-validated">
+                <div class="form-group" >
+                    <select class="form-control" id="pagoSeleccionado" required>
+                        <option value="" >Seleccione método de pago</option>
+                        <option value="crédito">Tarjeta de crédito</option>
+                        <option value="transferencia" selected>Transferencia bancaria</option>
+                    </select>
+                    <div class="invalid-feedback">Debe seleccionar un método de pago</div>
+                </div>
+            </form>
+
+                <form class="was-validated" style="width: 80%; margin: auto;">
+                    <div class="form-row">
+                        <div class="form-group col-9"  style="margin: auto;">
+                            <label for="numCuenta">Número de cuenta</label>
+                            <input type="number" class="form-control" id="numCuenta" min="0" required>
+                            <div class="invalid-feedback">Debe completar el campo</div>
+                        </div>
+                    </div>
+                    </br>
+                    <button type="submit" id="finalizarBtn" class="btn btn-primary" style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57 "> 
+                        Finalizar compra
+                    </button>
+
+                </form>
+            </div>
+
+            `
+            
+
+        } else {
+            document.getElementById("paymentBody").innerHTML = `
+            
+            <form class="was-validated">
+                            <div class="form-group">
+                                <select class="form-control" id="pagoSeleccionado" required>
+                                    <option value="" >Seleccione método de pago</option>
+                                    <option value="crédito">Tarjeta de crédito</option>
+                                    <option value="transferencia">Transferencia bancaria</option>
+                                 </select>
+                             <div class="invalid-feedback">Debe seleccionar un método de pago</div>
+                            </div>
+                        </form>
+        `
+
+        }
+        
+        document.getElementById("pagoSeleccionado").onchange = function () {
+            pagoSeleccionado();
+        } //Para que se ejecute aún cuando cambio seleccion de metodo de pago luego de ya seleccionado otro anteriormente
+        
+        
+    }
+
+    document.getElementById("pagoSeleccionado").onchange = function () {
+        pagoSeleccionado();
+    } //Ejecuto funcion que muestra campos a completar segun el metodo de pago seleccionado
+    
+    
+    
     return montoTotal;
+
+
+
 }
 
-function newBadge() {
-   // listaProd = localStorage.getItem('articulos');
-    
 
+function newBadge() {
+    localStorage.getItem('articulos');
     let prodEnBadge = 0;
     for (i = 0; i < articulos.length; i++) {
         let art = articulos[i];
@@ -324,6 +507,11 @@ function newBadge() {
     document.getElementById("prodBadge").innerHTML = prodEnBadge;
 }
 
-function limpiarCarrito(i) {
-    //Usar splice.
+
+function limpiarCarrito(articulos, posicion) {
+    localStorage.getItem("articulos"); 
+    articulos.splice(posicion, 1);
+    localStorage.setItem('articulos', JSON.stringify(articulos));
+    mostrarArticulos(articulos);
+    newBadge();
 }

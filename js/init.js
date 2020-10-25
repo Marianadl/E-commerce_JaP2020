@@ -6,6 +6,7 @@ const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+const COUNTRIES = "https://restcountries.eu/rest/v2/all"
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -52,6 +53,16 @@ function signOut() {
   });
 }
 
+function newBadge() {
+  localStorage.getItem('articulos');
+  let prodEnBadge = 0;
+  for (i = 0; i < articulos.length; i++) {
+      let art = articulos[i];
+      prodEnBadge = art.count;
+  }
+  console.log("Cantidad prod para badge:", prodEnBadge)
+  document.getElementById("prodBadge").innerHTML = prodEnBadge;
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
