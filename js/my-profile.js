@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById("ingreso").innerHTML += ' <i class= "fa fa-user m-2" ></i> ';
     };
 
-
+// Obtengo lista de países de const Countries, recorro la lista con un for y los agrego a select
     getJSONData(COUNTRIES).then(function (resultObj) {
         if (resultObj.status === "ok") {
             countriesList = resultObj.data
@@ -29,11 +29,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         
     });
     
+    // Si los datos estan en localStorage en newUserData ejecuta showUserData, si no estan ejecuta showNoData
    if (localStorage.getItem("newUserData") != undefined) {
         showUserData()
    } else { showNoData() }
 });
 
+// var contiene datos de usuario
 var userData = {
     name: '',
     age: '',
@@ -45,7 +47,7 @@ var userData = {
 
 
 
-
+// Funcion a ejecutar cuando clickeo botón de 'guardar datos' en ventana modal. Guarda en cada atributo de la var userData los datos ingresados en los inputs de la modal
 function editData() {
     userData.name = document.getElementById("userName").value;
     userData.age = document.getElementById("edad").value;
@@ -53,6 +55,7 @@ function editData() {
     userData.country = document.getElementById("selectCountry").value;
     userData.email = document.getElementById("email").value;
 
+    // Función para tomar el file del input showImg y convertirlo a string base64. Cambia el src de img al string base64
     function previewFile() {
         const preview = document.getElementById("showImg");
         const file = document.querySelector('input[type=file]').files[0];
@@ -71,13 +74,13 @@ function editData() {
       }
      
 previewFile();
-userData.img = document.getElementById("showImg").src;
-localStorage.setItem("newUserData", JSON.stringify(userData)); 
-showUserData();
+userData.img = document.getElementById("showImg").src; //Toma el src base64 del file que se subió y lo guarda como atributo de la var userData
+localStorage.setItem("newUserData", JSON.stringify(userData)); // guardo var userData como string en logalStorage como newUserData
+showUserData(); //Ejecuto función para mostrar los datos modificados
         }
 
 
-
+//Función para mostrar los datos modificados y guardados en localStorage
 function showUserData() {
                 let newUserData = localStorage.getItem("newUserData")
                 userData = JSON.parse(newUserData);
@@ -95,7 +98,7 @@ function showUserData() {
                     document.getElementById("showImg").src = "https://picsum.photos/200/200"; }
             }
 
-
+// Funcion a ejecutar antes de guardar en localStorage
 function showNoData() {
    document.getElementById("showImg").src = "https://picsum.photos/200/200";
    document.getElementById("showName").innerHTML = "Nombre de usuario";
@@ -104,7 +107,7 @@ function showNoData() {
    document.getElementById("showCountry").innerHTML = "País";
 }
 
-
+// Funcion a ejecutar cuando se cierra sesión para borrar newUserData del localStorage
 document.getElementById("cerrarSesion").onclick = function () {
     localStorage.removeItem("newUserData");
     console.log("Se eliminó newUserData del localStorage")
