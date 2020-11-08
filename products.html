@@ -1,146 +1,157 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark " aria-label="Navigation bar">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="navbar-brand text-light" href="cover.html">Inicio</a>
-        <a class="navbar-brand text-light" href="categories.html">Categorías</a>
-        <a class="navbar-brand text-light" href="products.html">Productos</a>
-        <a class="navbar-brand text-light" href="sell.html">Vender</a>
-  
-        <div class="navbar-brand text-light nav-item dropdown" id="dropdown-contain">
-          <a class="nav-link dropdown-toggle" id="ingreso" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" aria-label="Menu dropdown"><span class="navbar-toggler-icon"></span></a>
-          <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
-            <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-             </a>
-            <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle"
-                aria-hidden="true"></i></a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking"
-                aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
-          </div>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark " aria-label="Navigation bar">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="navbar-brand text-light" href="cover.html">Inicio</a>
+      <a class="navbar-brand text-light" href="categories.html">Categorías</a>
+      <a class="navbar-brand text-light" href="products.html">Productos</a>
+      <a class="navbar-brand text-light" href="sell.html">Vender</a>
+
+      <div class="navbar-brand text-light nav-item dropdown" id="dropdown-contain">
+        <a class="nav-link dropdown-toggle" id="ingreso" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" aria-label="Menu dropdown"><span class="navbar-toggler-icon"></span></a>
+        <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
+          <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </a>
+          <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle"
+              aria-hidden="true"></i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking"
+              aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
         </div>
       </div>
-    </nav>
-
-
-
-
-
-<main role= "main" class="pb-5">  
-  <div class="text-center p-4" role="banner" style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
-    <h2>Productos</h2>
-    <p class="lead">Verás aquí todas los productos disponibles en el sitio.</p>
-</div>
-<hr>
-<!-- Formato tomado de categories.html y adaptado. Se cambiaron class e id-->
-<div class="container">
-  <div class="row justify-content-end mb-4">
-    
-    <div class="p-0">
-      <label class="mb-0" for="icono-de-busqueda">
-        <!-- aria-hidden:true para que esconda el icono cuando se usa screan-reader -->
-        <i class="fa fa-search p-2" aria-hidden="true"></i> 
-      </label>
-      <label class="btn-light mb-0 p-0" for="input-de-busqueda" >
-             <input type="search" class="form-control" id="buscador" onkeyup="buscar()" aria-label="Busca-en-producos" placeholder="Busque su producto">
-      </label>
     </div>
-
-
-    <!-- <div class="col-md-6"></div> -->
-    <div class="btn-group btn-group-toggle " data-toggle="buttons"  style="margin: auto;">
-      <label class="btn btn-light" id="sortByCost">
-          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>U$D <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
-      </label>
-      <label class="btn btn-light" id="sortByCostDesc" >
-        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>U$D
-    </label>
-    <label class="btn btn-light" id="sortBySoldCount" >
-      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
-  </label>
-
-
-  </div>
+  </nav>
 
 
 
 
 
+  <main role="main" class="pb-5">
+    <div class="text-center p-4" role="banner"
+      style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
+      <h2>Productos</h2>
+      <p class="lead">Verás aquí todas los productos disponibles en el sitio.</p>
+    </div>
+    <hr>
+    <!-- Formato tomado de categories.html y adaptado. Se cambiaron class e id-->
+    <div class="container">
+      <div class="row justify-content-end mb-4">
+
+        <div class="p-0">
+          <label class="mb-0" for="icono-de-busqueda">
+            <!-- aria-hidden:true para que esconda el icono cuando se usa screen-reader -->
+            <i class="fa fa-search p-2" aria-hidden="true"></i>
+          </label>
+          <label class="btn-light mb-0 p-0" for="input-de-busqueda">
+            <input type="search" class="form-control" id="buscador" onkeyup="buscar()" aria-label="Busca-en-producos"
+              placeholder="Busque su producto">
+          </label>
+        </div>
+
+
+        <!-- <div class="col-md-6"></div> -->
+        <div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin: auto;">
+          <label class="btn btn-light" id="sortByCost">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt mr-1"></i>U$D
+            <!-- Clase original: "fas fa-sort-amount-down mr-1"-->
+          </label>
+          <label class="btn btn-light" id="sortByCostDesc">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>U$D
+          </label>
+          <label class="btn btn-light" id="sortBySoldCount">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
+          </label>
+
+
+        </div>
 
 
 
-  <div class="col-md-6 col-sm-12 mb-1 mr-0 container" style="margin-left: 0;" >
-        
 
 
-        <div class="row container p-0 m-0">
 
 
-          <div class="col">
-            <p class="font-weight-normal text-right my-2">Precio:</p>
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
-          </div>
-          <div class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+
+        <div class="col-lg-5 mb-1">
+
+          <div class="row">
+
+            <div class="col">
+              <p class="font-weight-normal text-right my-2">Precio:</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-  </div>
-  
-    <div class="row">
-      <div class="list-group" id="prod-list-container">
+      <div class="container">
+        <div class="row" id="prod-list-container">
+
+        </div>
       </div>
     </div>
-  </div>
-</main>
+
+  </main>
 
 
 
-        <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+  <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
         <h4 class="alert-heading">¡A trabajar! :)</h4>
         <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
         <hr>
         <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
       </div>
            </div> -->
-        <footer class="text-muted bg-light">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-      </div>
-            </footer>
+  <footer class="text-muted bg-light">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
 
-    <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/products.js"></script>
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-  </body>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+</body>
+
 </html>

@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -32,6 +32,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -47,16 +48,124 @@
           aria-expanded="false" aria-label="Menu dropdown"><span class="navbar-toggler-icon"></span></a>
         <div id="dropdown-content" class="dropdown-menu" aria-labelledby="Menu dropdown">
           <a class="dropdown-item" href="cart.html"> Mi carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            </a>
+          </a>
           <a class="dropdown-item" href="my-profile.html"> Mi perfil <i class="fa fa-user-circle"
               aria-hidden="true"></i></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking"
+          <a class="dropdown-item" id="cerrarSesion" href="index.html" onclick="signOut();">Cerrar sesión <i class="fas fa-walking"
               aria-hidden="true"></i><i class="fas fa-door-open" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </nav>
+
+  <div class="container" id="contenedor">
+    <div class="row justify-content-center">
+      <div class="col-sm-5">
+        <div class="card text-center">
+          <img class="card-img-top" id="showImg" src="" style="width: 80%; margin: auto;">
+
+          <div class="card-body">
+            <h2 class="card-title"> <small id="showName"></small></h2>
+            <p class="card-text" ><small id="showAge"></small></p>
+            <p class="card-text" ><small id="showNumber"></small></p>
+            <p class="card-text" >
+              <i class="fa fa-map-marker"></i> <small id="showCountry"></small>
+            </p>
+            <p class="card-text"> <i class="fa fa-envelope"> </i> <a href="" id="showEmail"><small >Correo electrónico</small></a> </p>
+          </div>
+          <div class="card-footer">
+
+            <!-- Button trigger modal -->
+            <button type="button" data-target="#editUserDataModal" data-toggle="modal" class="btn btn-primary"
+              style="width: 80%; background: linear-gradient(to right, #ec9ca7, #d33a57); border-color: #d33a57; text-align: center; vertical-align: middle;">
+              <h5>Editar datos de usuario</h5>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="editUserDataModal" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar datos de usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
+                      <form class="form-horizontal">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="text" class="form-control"  id="userName" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" ><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="number" class="form-control" id="edad" placeholder="Edad" aria-label="edad" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                          </div>
+                          <input type="number" class="form-control"  id="telefono" placeholder="Número de contacto" aria-label="Número de contacto" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-globe"></i></span>
+                          </div>
+                          <select id="selectCountry" class="custom-select" required>
+                            <option value="">Seleccione país</option>
+                          </select></div>
+
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="email" class="form-control" id="email" placeholder="E-mail" aria-label="Email" aria-describedby="basic-addon1">
+                          </div>
+
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-camera-retro" aria-hidden="true"></i></span>
+                            </div>
+                            <input type="file" class="form-control" id="imagen" placeholder="Cambiar imagen" aria-label="Nueva imagen" aria-describedby="basic-addon1">
+                          </div>
+
+                      </form>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="editData()" data-dismiss="modal">Guardar datos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
+  <!--   
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -64,7 +173,7 @@
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+  </div> -->
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -85,12 +194,14 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
   <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
 </body>
 
 </html>

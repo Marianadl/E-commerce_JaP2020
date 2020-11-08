@@ -54,19 +54,23 @@ function showProductsList() {
 
         htmlContentToAppend +=
             `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="col-12 col-lg-6 list-group-item list-group-item-action">
+            
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-lg">
                         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                     </div>
-                    <div class="col">
+                    <div class="col-xl-6 d-none d-sm-block">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ product.name +` - `+ product.currency +` `+ product.cost + `</h4>
                             <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                         </div>
+                        <div class="d-none d-md-block">
                             <p class="mb-1"> <br> ` + product.description + ` </p>
+                        </div>
                     </div>
                 </div>
+                
             </a>
             `
             }
