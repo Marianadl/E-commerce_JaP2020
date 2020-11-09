@@ -122,9 +122,5 @@ function showNoData() {
    document.getElementById("showCountry").innerHTML = "País";
 }
 
-// Funcion a ejecutar cuando se cierra sesión para borrar newUserData del localStorage
-document.getElementById("cerrarSesion").onclick = function () {
-    localStorage.removeItem("newUserData");
-    console.log("Se eliminó newUserData del localStorage")
-}
+
 

@@ -155,3 +155,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("ingreso").innerHTML +=  ` <img src=" `+ localStorage.getItem("avatar")+ ` " width="15" class="rounded-circle m-2">`;    
     } else { document.getElementById("ingreso").innerHTML += ' <i class= "fa fa-user m-2" ></i> '; };
     });
+
