@@ -123,7 +123,7 @@
                             <span class="input-group-text"><i class="fa fa-globe"></i></span>
                           </div>
                           <select id="selectCountry" class="custom-select" required>
-                            <option value="">Seleccione país</option>
+                            <option disabled selected value="">Seleccione país</option>
                           </select></div>
 
                           <div class="input-group mb-3">
@@ -137,7 +137,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fa fa-camera-retro" aria-hidden="true"></i></span>
                             </div>
-                            <input type="file" class="form-control" id="imagen" placeholder="Cambiar imagen" aria-label="Nueva imagen" aria-describedby="basic-addon1">
+                            <input type="file" class="form-control" id="imagen" aria-label="Nueva imagen" aria-describedby="basic-addon1">
                           </div>
 
                       </form>
@@ -145,7 +145,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="editData()" data-dismiss="modal">Guardar datos</button>
+                    <button type="button" class="btn btn-primary" id="changeInfo"  data-dismiss="modal" style="background-color: #d33a57;">Guardar datos</button>
                   </div>
                 </div>
               </div>
@@ -202,6 +202,7 @@
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
   <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>
 
