@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 opcionPais += ` <option>${pais.name}</option>
         `
             }
-            document.getElementById("selectCountry").innerHTML += opcionPais;
+            document.getElementById("selectCountryProfile").innerHTML += opcionPais;
         }
     });
     
@@ -70,7 +70,7 @@ function editData() {
     userData.name = document.getElementById("userName").value;
     userData.age = document.getElementById("edad").value;
     userData.number = document.getElementById("telefono").value;
-    userData.country = document.getElementById("selectCountry").value;
+    userData.country = document.getElementById("selectCountryProfile").value;
     userData.email = document.getElementById("email").value;
 
 previewFile()
